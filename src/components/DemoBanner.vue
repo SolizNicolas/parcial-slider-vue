@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <div v-if="banners.length > 0">
     <div class="slideshow-container">
-      {{ banners[1].urlImageBanner }}
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
+      <div>
+        <div class="numbertext">{{ selector + 1 }} / {{ banners.length }}</div>
         <img
-          :src="banners[1].urlImageBanner"
+          :src="banners[selector].urlImageBanner"
           style="width: 1000px; height: 600px"
+          alt="Image"
         />
         <div class="text">
-          Caption Text<br />Descripción de la Imagen hasta 512 caracteres
+          {{ banners[selector].textCaption }}
+          <br />{{ banners[selector].descripcionImagen }}
         </div>
       </div>
+      <a class="prev" @click="moveSlide(-1)">❮</a>
+      <a class="next" @click="moveSlide(1)">❯</a>
     </div>
   </div>
 </template>
@@ -23,10 +26,18 @@ export default {
   data() {
     return {
       banners: [],
+      selector: 0,
     };
   },
 
   methods: {
+    moveSlide(n) {
+      if (this.selector + n === this.banners.length) this.selector = 0;
+      else if (this.selector + n === -1)
+        this.selector = this.banners.length - 1;
+      else this.selector += n;
+    },
+
     async getBanners() {
       let url = "http://168.194.207.98:8081/api_banner/get_banners.php",
         options = {
