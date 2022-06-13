@@ -1,26 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HomeSlider msg="Welcome to Your Vue.js App"/>
+  <NavbarBanner />
+  <router-view></router-view>
 </template>
 
 <script>
-import HomeSlider from './components/HomeSlider.vue'
+import NavbarBanner from "./components/NavbarBanner.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HomeSlider
-  }
-}
+    NavbarBanner,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
