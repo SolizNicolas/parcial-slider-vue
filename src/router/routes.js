@@ -13,8 +13,13 @@ const routes = [
     component: () => import("../components/TablaBanners"),
   },
   {
-    path: "/formularioBanner",
-    name: "FormularioBanner",
+    path: "/editar/:id",
+    name: "EditarBanner",
+    component: () => import("../components/FormularioBanner"),
+  },
+  {
+    path: "/insertar",
+    name: "InsertarBanner",
     component: () => import("../components/FormularioBanner"),
   },
 ];

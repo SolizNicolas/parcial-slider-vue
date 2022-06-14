@@ -17,12 +17,19 @@
       <a class="next" @click="moveSlide(1)">❯</a>
     </div>
   </div>
+  <br />
+  <div style="text-align: center">
+    <span
+      v-for="(banner, index) in banners"
+      :key="banner.id"
+      class="dot"
+      @click="selector = index"
+    ></span>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "DemoBanner",
-
   data() {
     return {
       banners: [],
